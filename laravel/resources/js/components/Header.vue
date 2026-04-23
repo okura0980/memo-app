@@ -3,18 +3,57 @@ import DocumentSvg from './svgs/DocumentSvg.vue'
 </script>
 
 <template>
-    <header class="w-full bg-white rounded-xl shadow-sm px-6 py-4">
-        <div class="flex items-center justify-center gap-3">
-            <DocumentSvg class="h-8 w-8 text-orange-500" />
+    <header class="header">
 
-            <div class="text-center">
-                <h1 class="text-4xl font-bold text-orange-500">
-                    かんたんメモ
-                </h1>
-                <p class="text-sm text-gray-500 mt-1">
-                    思いついたことをサッと記録しよう
-                </p>
-            </div>
+        <!-- 上（アイコン + タイトル） -->
+        <div class="top">
+            <DocumentSvg class="icon" />
+            <h1 class="title">かんたんメモ</h1>
         </div>
+
+        <!-- 下（説明） -->
+        <p class="subtitle">
+            思いついたことをサッと記録しよう
+        </p>
+
     </header>
 </template>
+
+<style scoped>
+.header {
+    width: 100%;
+    padding: 24px 0;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* 上の行 */
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* アイコン */
+.icon {
+    width: 28px;
+    height: 28px;
+    color: #f97316; /* オレンジ */
+}
+
+/* タイトル */
+.title {
+    font-size: 30px;
+    font-weight: 500;
+    color: #f97316;
+}
+
+/* サブタイトル */
+.subtitle {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #6b7280;
+}
+</style>

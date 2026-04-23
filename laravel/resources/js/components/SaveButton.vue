@@ -8,7 +8,7 @@ const emit = defineEmits(['click'])
             :class="disabled ? 'disabled' : 'active'"
             @click="emit('click')"
     >
-        <div class="in"> <PlusSvg />
+        <div class="in"> <PlusSvg class="icon" />
             <span>メモを保存</span>
         </div>
     </button>
@@ -29,15 +29,22 @@ const emit = defineEmits(['click'])
     gap: 8px; }
 
 .button.disabled {
-    background: rgba(223, 141, 81, 0.6);
+    background: linear-gradient(90deg, #f3b489, #e8a6a6);
     opacity: 0.6;
     cursor: not-allowed; }
 
 .button.active {
     background: #f59e0b;
+    background: linear-gradient(90deg, #ff6a00, #ef4444);
     cursor: pointer; }
 
 .button.active:hover {
     background: #ea8a00;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+    color: white;
 }
 </style>
