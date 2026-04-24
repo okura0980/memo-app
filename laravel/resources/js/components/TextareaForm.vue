@@ -1,12 +1,13 @@
 <script setup>
 defineProps(['modelValue'])
-defineEmits(['update:modelValue'])
+defineEmits(['update:modelValue','enter'])
 </script>
 
 <template>
   <textarea
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+      @keydown.enter.exact.prevent="$emit('enter')"
       class="textarea"
       placeholder="メモを入力してください...
 Enter保存、Shift+Enterで改行"
