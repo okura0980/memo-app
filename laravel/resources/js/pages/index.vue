@@ -14,6 +14,9 @@ const saveMemo = async () => {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         },
+        body: JSON.stringify({
+            content: text.value,
+        }),
     })
 
     text.value = ''
@@ -32,7 +35,10 @@ const saveMemo = async () => {
         </div>
 
         <!-- テキストエリア -->
-        <Textarea v-model="text" />
+        <Textarea
+            v-model="text"
+            @enter="saveMemo"
+        />
 
         <!-- ボタン -->
         <SaveButton
