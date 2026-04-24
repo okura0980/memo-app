@@ -5,17 +5,25 @@ import Header from "../components/Header.vue";
 import Textarea from '../components/TextareaForm.vue';
 import SaveButton from '../components/SaveButton.vue';
 const text = ref('')
-const saveMemo = () => {
-    if (text.value.trim().length === 0) return
+const saveMemo = async () => {
+    if (text.value.trim() === '') return
 
-    console.log(text.value)
+    await fetch('/api/memos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+    })
+
     text.value = ''
 }
 </script>
 
 <template>
   <Header />
-    <div class="card">
+    <div class="aaa">
+            <div class="card">
 
         <!-- タイトル -->
         <div class="clickbox">
@@ -31,10 +39,17 @@ const saveMemo = () => {
         :disabled="text.trim().length===0"
         @click="saveMemo"
         />
+        </div>
     </div>
 </template>
 
 <style>
+.aaa{
+    background-color:#fff8e8;
+    padding-top: 40px;
+    min-height: 100vh;
+}
+
 .clickbox{
     margin-bottom:10px;
 }
@@ -50,7 +65,7 @@ const saveMemo = () => {
 
 .card {
     width: 500px;
-    margin: 40px auto;
+    margin: 0 auto;
     padding: 20px;
     background: white;
     border-radius: 12px;
