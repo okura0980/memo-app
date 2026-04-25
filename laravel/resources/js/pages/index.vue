@@ -1,10 +1,26 @@
 <script setup lang="ts">
 import Welcome from "../features/Welcome.vue";
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import Header from "../components/Header.vue";
 import Textarea from '../components/TextareaForm.vue';
 import SaveButton from '../components/SaveButton.vue';
+import Memoarea from '../components/Memoarea.vue';
 const text = ref('')
+const memos = ref([])
+
+const fetchMemos = async () => {
+    const res = await fetch('/api/memos')
+    memos.value = await res.json()
+}
+
+const deleteMemo = async (id: number) => {
+    await fetch(`/api/memos/${id}`, {
+        method: 'DELETE',
+    })
+
+    await fetchMemos()
+}
+
 const saveMemo = async () => {
     if (text.value.trim() === '') return
 
@@ -18,9 +34,13 @@ const saveMemo = async () => {
             content: text.value,
         }),
     })
-
+    await fetchMemos()
     text.value = ''
 }
+
+onMounted(() => {
+    fetchMemos()
+})
 </script>
 
 <template>
@@ -46,6 +66,9 @@ const saveMemo = async () => {
         @click="saveMemo"
         />
         </div>
+
+        <Memoarea :memos="memos" @delete="deleteMemo"/>
+
     </div>
 </template>
 
