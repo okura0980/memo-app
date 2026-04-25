@@ -13,6 +13,18 @@ class MemoController extends Controller
             'content' => $request['content'],
         ]);
 
-        return response()->json(['message' => 'ok']);
+        return response()->json(['message' => 'ok!!!']);
+    }
+
+    public function add_memo()
+    {
+        return Memo::all();
+    }
+
+    public function delete($id)
+    {
+        Memo::findOrFail($id)->delete();
+
+        return response()->json(['message' => 'deleted']);
     }
 }
