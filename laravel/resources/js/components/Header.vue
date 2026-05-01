@@ -23,9 +23,10 @@ import DocumentSvg from './svgs/DocumentSvg.vue'
 .header {
     width: 100%;
     padding: 24px 0;
-    background: #fff;
+    background: white;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+    margin-bottom: 2px;
 }
 
 /* 上の行 */

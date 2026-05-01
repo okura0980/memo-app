@@ -1,4 +1,5 @@
-<script setup> import PlusSvg from './svgs/PlusSvg.vue'
+<script setup>
+import PlusSvg from './svgs/PlusSvg.vue'
 defineProps({ disabled: Boolean })
 const emit = defineEmits(['click'])
 </script>
