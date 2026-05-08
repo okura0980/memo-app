@@ -51,6 +51,17 @@ const formatDate = (dateStr: string) => {
             <div class="memo-date">
                 {{ formatDate(memo.created_at) }}
             </div>
+            <div class="memo-tags">
+                <span
+                    v-for="tag in memo.tags"
+                    :key="tag.id"
+                    class="memo-tag"
+                >
+                    #{{ tag.name }}
+                </span>
+            </div>
+
+
 
             <button class="delete-btn" @click="$emit('delete', memo.id)">
                 <TrashSvg />
@@ -101,6 +112,7 @@ const formatDate = (dateStr: string) => {
 .memo-area {
     width: 500px;
     margin: 0 auto;
+    margin-top: 40px;
 }
 
 .memo-header {
@@ -163,4 +175,17 @@ const formatDate = (dateStr: string) => {
     display: block;
 }
 
+.memo-tags {
+    margin-top: 8px;
+}
+
+.memo-tag {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 4px 8px;
+    background: #fff0d6;
+    color: #f97316;
+    border-radius: 999px;
+    font-size: 12px;
+}
 </style>
